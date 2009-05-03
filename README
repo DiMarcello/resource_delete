@@ -1,16 +1,14 @@
-ResourceDelete
-==============
+== ResourceDelete
 
 This plugin adds an delete action with method get to each resource route.
-Since the standard Rails way to delete a resource is obtrusive javascript,
+This because the standard Rails way to delete a resource is through obtrusive javascript,
 and a good website should also be accessed without javascript.
 
 A good way to implement this action is to write a form with a message
 like "Are you sure?" and submit buttons "Yes" and "No", with the first
 destroying the record, and the second redirecting to the referring page.
 
-Example
-=======
+== Example
 
 The plugin adds a delete action by default:
   map.resources :pirates # /pirates/1/delete
@@ -18,5 +16,10 @@ The plugin adds a delete action by default:
 
 To override this behaviour you should add delete to the except option:
   map.resources :pirates, :except => [:delete]
+
+==Todo
+
+Write a form_for_delete to auto add the delete method to the form, just
+for conveniance sake.
   
 Copyright (c) 2009 DiMarcello, released under the MIT license
