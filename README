@@ -16,8 +16,24 @@ The plugin adds a delete action by default:
 
 To override this behaviour you should add delete to the except option:
   map.resources :pirates, :except => [:delete]
+  
+View (delete.html.erb)
+  <%- form_for @object, :url => {:action => :destroy} do |form| -%>
+    "Are you sure?"
+    <%= form.submit "Yes" %>
+    <%= form.submit "No", :name => 'cancel' %>
+  <%- end -%>
 
-==Todo
+Controller
+  def destroy
+    if params[:object][:cancel]
+      redirect_to :action => :show
+    else
+      @object.destroy
+    end
+  end
+
+== Todo
 
 Write a form_for_delete to auto add the delete method to the form, just
 for conveniance sake.
